@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../services/authService";
 
-interface SignInProps {}
-
 interface Errors {
   email?: { message: string };
   password?: { message: string };
   serverMessage?: string;
 }
 
-const SignIn: React.FC<SignInProps> = (props) => {
+const SignIn = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errors, setErrors] = useState<Errors>({});

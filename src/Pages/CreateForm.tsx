@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import dataService from './../services/dataService';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import dataService from "./../services/dataService";
 
 interface Errors {
   firstname?: { message: string };
@@ -8,10 +8,10 @@ interface Errors {
   position?: { message: string };
 }
 
-const Create: React.FC = (props) => {
-  const [firstname, setFirstName] = useState<string>('');
-  const [lastname, setLastName] = useState<string>('');
-  const [position, setPosition] = useState<string>('');
+const Create: React.FC = () => {
+  const [firstname, setFirstName] = useState<string>("");
+  const [lastname, setLastName] = useState<string>("");
+  const [position, setPosition] = useState<string>("");
   const [errors, setErrors] = useState<Errors>({});
 
   const navigate = useNavigate();
@@ -20,13 +20,16 @@ const Create: React.FC = (props) => {
     event.preventDefault();
     setErrors({});
 
-    dataService.createPlayer({ firstname, lastname, position }, (error: any) => {
-      if (!error) {
-        navigate('/');
-      } else {
-        console.error(error);
+    dataService.createPlayer(
+      { firstname, lastname, position },
+      (error: any) => {
+        if (!error) {
+          navigate("/");
+        } else {
+          console.error(error);
+        }
       }
-    });
+    );
   };
 
   return (

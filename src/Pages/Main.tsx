@@ -1,7 +1,12 @@
-import { Blog, Categories, Download, ListingTypes, Pricing } from "./index";
-import { Search, Newsletter } from "../components/index";
 import { useState } from "react";
 import SearchCard from "../components/SearchCard";
+import Search from "../components/Search";
+import Categories from "./Categories";
+import ListingTypes from "./ListingTypes";
+import Blog from "./Blog";
+import Pricing from "./Pricing";
+import Download from "./Download";
+import Newsletter from "../components/Newsletter";
 interface SearchQuery {
   findQuery: string;
   whereQuery: string;

@@ -1,43 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom';
-import React, { useState, FormEvent, JSX } from 'react';
-import authService from './../services/authService';
+import { Link, useNavigate } from "react-router-dom";
+import React, { JSX } from "react";
+import authService from "./../services/authService";
 import Logo from "./../img/logo.png";
 
 function NavBar(): JSX.Element {
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [errors, setErrors] = useState<Record<string, any>>({});
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
-    event.preventDefault();
-
-    // Reset any validation messages
-    console.log({ email, password });
-    setErrors({});
-
-    // Post the form data to the API for authentication
-    authService.signin({ email, password }, (error: any) => {
-      if (!error) {
-        navigate('/');
-      } else {
-        console.log(error);
-        // Save our validation errors in state
-        if (error.status === 422) {
-          // Store any validation in state
-          setErrors(error.data.errors);
-        } else if (error.status === 401) {
-          setErrors(error.data);
-        }
-      }
-    });
-  };
+  // Post the form data to the API for authentication
 
   const handleLogout = (event: React.MouseEvent<HTMLAnchorElement>): void => {
-    console.log('handleLogout');
+    console.log("handleLogout");
     event.preventDefault();
     authService.signout();
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -80,9 +55,9 @@ function NavBar(): JSX.Element {
               <ul
                 className="nav-menu"
                 style={{
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  justifyContent: 'flex-end',
+                  display: "flex",
+                  alignItems: "flex-end",
+                  justifyContent: "flex-end",
                 }}
               >
                 {authService.isAuthenticated() && (
@@ -121,7 +96,11 @@ function NavBar(): JSX.Element {
                       Welcome
                     </a>
                     <div className="dropdown-menu" aria-labelledby="dropdown07">
-                      <Link to={''} className="dropdown-item" onClick={handleLogout}>
+                      <Link
+                        to={""}
+                        className="dropdown-item"
+                        onClick={handleLogout}
+                      >
                         Logout
                       </Link>
                     </div>

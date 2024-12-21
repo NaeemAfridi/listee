@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 // import axios from "axios";
-export const Search = ({ onSearch}:{onSearch:any}) => {
-  const [findQuery, setFindQuery] = useState('');
-  const [whereQuery, setWhereQuery] = useState('');
+export const Search = ({ onSearch }: { onSearch: any }) => {
+  const [findQuery, setFindQuery] = useState("");
+  const [whereQuery, setWhereQuery] = useState("");
 
   // const navigate = useNavigate();
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       // const response = await axios.get(`http://localhost:300/api/search`, {
@@ -22,7 +22,7 @@ export const Search = ({ onSearch}:{onSearch:any}) => {
       onSearch({ findQuery, whereQuery });
       // navigate('/another-component', { state: { responseData: data } });
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 

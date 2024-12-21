@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 type Business = {
   business_id: string;
@@ -24,7 +24,7 @@ interface SearchCardProps {
 }
 
 const SearchCard: React.FC<SearchCardProps> = ({ searchQuery }) => {
-  console.log(searchQuery, 'searchQuery');
+  console.log(searchQuery, "searchQuery");
   const { findQuery, whereQuery } = searchQuery;
 
   const [businesses, setBusinesses] = useState<Business[]>([]);
@@ -34,7 +34,7 @@ const SearchCard: React.FC<SearchCardProps> = ({ searchQuery }) => {
       async function fetchData() {
         try {
           const options = {
-            method: 'GET',
+            method: "GET",
             url: `http://localhost:5000/api/search?find=${findQuery}&where=${whereQuery}`,
             params: {},
             headers: {},
@@ -90,7 +90,9 @@ const SearchCard: React.FC<SearchCardProps> = ({ searchQuery }) => {
   //   y.set(0);
   // };
 
-  const [hoveredCards, setHoveredCards] = useState<boolean[]>(new Array(businesses.length).fill(false));
+  const [hoveredCards, setHoveredCards] = useState<boolean[]>(
+    new Array(businesses.length).fill(false)
+  );
 
   // Function to handle mouse enter for a specific card
   const handleMouseEnter = (index: number) => {
@@ -116,8 +118,8 @@ const SearchCard: React.FC<SearchCardProps> = ({ searchQuery }) => {
       <div
         className=""
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
+          display: "flex",
+          flexWrap: "wrap",
           marginRight: 10,
           marginLeft: 10,
         }}
@@ -125,18 +127,18 @@ const SearchCard: React.FC<SearchCardProps> = ({ searchQuery }) => {
         {/* Mapping over businesses array */}
         {businesses.map((business, index) => (
           <motion.div
-          {...({
-            key: business.business_id,
-            onHoverStart: () => handleMouseEnter(index),
-            onHoverEnd: () => handleMouseLeave(index),
-            className: "col-xl-3 col-lg-4 col-md-6 col-sm-12",
-            style: {
-              margin: 20,
-              transformStyle: 'preserve-3d',
-              transform: hoveredCards[index] ? 'scale(1.1)' : 'scale(1)',
-              transition: 'transform 0.3s ease',
-            },
-          } as any)}
+            {...({
+              key: business.business_id,
+              onHoverStart: () => handleMouseEnter(index),
+              onHoverEnd: () => handleMouseLeave(index),
+              className: "col-xl-3 col-lg-4 col-md-6 col-sm-12",
+              style: {
+                margin: 20,
+                transformStyle: "preserve-3d",
+                transform: hoveredCards[index] ? "scale(1.1)" : "scale(1)",
+                transition: "transform 0.3s ease",
+              },
+            } as any)}
           >
             <div>
               <div className="Goodup-grid-wrap">

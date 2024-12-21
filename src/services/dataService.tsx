@@ -45,6 +45,7 @@ class dataService {
         { headers: { "x-auth-token": authService.getToken() } }
       )
       .then((response) => {
+        console.log(response);
         callback();
       })
       .catch((error) => {
@@ -59,6 +60,7 @@ class dataService {
         headers: { "x-auth-token": authService.getToken() },
       })
       .then((response) => {
+        console.log(response);
         callback();
       })
       .catch((error) => {
